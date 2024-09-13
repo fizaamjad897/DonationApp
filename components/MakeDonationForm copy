@@ -1,0 +1,120 @@
+// components/MakeDonationForm.js
+import { useState } from 'react';
+import { Box, TextField, Button, Typography, InputAdornment } from '@mui/material';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import PaymentIcon from '@mui/icons-material/Payment';
+
+const MakeDonationForm = () => {
+  const [username, setUsername] = useState('');
+  const [contact, setContact] = useState('');
+  const [need, setNeed] = useState('');
+  const [location, setLocation] = useState('');
+  const [amount, setAmount] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardType, setCardType] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log({ username, contact, need, location, amount, cardNumber, cardType });
+  };
+
+  return (
+    <Box mb={2}>
+      <Typography variant="h6" gutterBottom>
+        Make a Donation
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label="Username"
+          variant="outlined"
+          fullWidth
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          margin="normal"
+        />
+        <TextField
+          label="Contact Number"
+          variant="outlined"
+          fullWidth
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
+          margin="normal"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <PaymentIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          label="Need"
+          variant="outlined"
+          fullWidth
+          value={need}
+          onChange={(e) => setNeed(e.target.value)}
+          margin="normal"
+        />
+        <TextField
+          label="Location"
+          variant="outlined"
+          fullWidth
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          margin="normal"
+        />
+        <TextField
+          label="Amount"
+          variant="outlined"
+          fullWidth
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          margin="normal"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <CreditCardIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          label="Card Number"
+          variant="outlined"
+          fullWidth
+          value={cardNumber}
+          onChange={(e) => setCardNumber(e.target.value)}
+          margin="normal"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <CreditCardIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          label="Card Type"
+          variant="outlined"
+          fullWidth
+          value={cardType}
+          onChange={(e) => setCardType(e.target.value)}
+          margin="normal"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <PaymentIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Button type="submit" variant="contained" color="primary">
+          Submit Donation
+        </Button>
+      </form>
+    </Box>
+  );
+};
+
+export default MakeDonationForm;
